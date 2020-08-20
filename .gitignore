@@ -5,6 +5,7 @@
 .docker
 .config
 .bash_history
+.vs
 
 MorphicCommunityAutomation/bin
 MorphicCommunityAutomation/obj
