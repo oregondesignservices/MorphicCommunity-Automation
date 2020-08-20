@@ -1,0 +1,10 @@
+.ms2
+.nuget
+.dotnet
+.doitrc
+.docker
+.config
+.bash_history
+
+MorphicCommunityAutomation/bin
+MorphicCommunityAutomation/obj
