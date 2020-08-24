@@ -15,7 +15,7 @@ namespace MorphicCommunityAutomation.Objects
         public void AddAllButtons()
         {
             // Add Gmail
-            IWebElement gmail = driver.FindElement(By.CssSelector("div#buttonsPanel > ul:nth-of-type(1) > li:nth-of-type(1) > a[target='_self']"));
+            IWebElement gmail = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']"));
             gmail.Click();
             IWebElement leftarrowbtn = driver.FindElement(By.CssSelector("div#preview-bar a[target='_self'] > svg[alt='icon']"));
             leftarrowbtn.Click();
@@ -23,13 +23,13 @@ namespace MorphicCommunityAutomation.Objects
             addtodrawer.Click();
 
             // Add Outlook
-            IWebElement outlook = driver.FindElement(By.CssSelector("div#buttonsPanel > ul:nth-of-type(1) > li:nth-of-type(2) > a[target='_self']"));
+            IWebElement outlook = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(2) > a[target='_self']"));
             outlook.Click();
             IWebElement secondaddtodrawer = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer.Click();
 
             // Add Yahoo mail
-            IWebElement yahoo = driver.FindElement(By.CssSelector("div#buttonsPanel > ul:nth-of-type(1) > li:nth-of-type(3) > a[target='_self']"));
+            IWebElement yahoo = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(3) > a[target='_self']"));
             yahoo.Click();
             IWebElement secondaddtodrawer1 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer1.Click();
@@ -37,7 +37,7 @@ namespace MorphicCommunityAutomation.Objects
 
 
             // Add AOL mail
-            IWebElement aol = driver.FindElement(By.CssSelector("div#buttonsPanel > ul:nth-of-type(1) > li:nth-of-type(4) > a[target='_self']"));
+            IWebElement aol = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(4) > a[target='_self']"));
             aol.Click();
             IWebElement secondaddtodrawer2 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer2.Click();
@@ -46,7 +46,7 @@ namespace MorphicCommunityAutomation.Objects
             // Predifined buttons 
 
             // Add Reddit
-            IWebElement reddit = driver.FindElement(By.CssSelector("div#buttonsPanel > ul:nth-of-type(2) > li:nth-of-type(1) > a[target='_self']"));
+            IWebElement reddit = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > div > li:nth-of-type(1) > a[target='_self']"));
             reddit.Click();
 
             IWebElement secondaddtodrawer10 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
@@ -54,13 +54,13 @@ namespace MorphicCommunityAutomation.Objects
 
 
             // Add Facebook
-            IWebElement facebook = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(2) > a[target='_self']"));
+            IWebElement facebook = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > div > li:nth-of-type(2) > a[target='_self']"));
             facebook.Click();
             IWebElement secondaddtodrawer3 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer3.Click();
 
             // Add Skype
-            IWebElement skype = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(3) > a[target='_self']"));
+            IWebElement skype = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > div > li:nth-of-type(3) > a[target='_self']"));
             skype.Click();
 
             IWebElement secondaddtodrawer4 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
@@ -68,28 +68,28 @@ namespace MorphicCommunityAutomation.Objects
 
 
             // Add Telegram
-            IWebElement telegram = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(4) > a[target='_self']"));
+            IWebElement telegram = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > div > li:nth-of-type(4) > a[target='_self']"));
             telegram.Click();
             IWebElement secondaddtodrawer5 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer5.Click();
 
 
             // Add Viber
-            IWebElement viber = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(5) > a[target='_self']"));
+            IWebElement viber = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > div > li:nth-of-type(5) > a[target='_self']"));
             viber.Click();
             IWebElement secondaddtodrawer6 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer6.Click();
 
 
-            // Add Task MAnager
-            IWebElement taskManager = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(6) > a[target='_self']"));
+            // Add Task Manager
+            IWebElement taskManager = driver.FindElement(By.CssSelector("div > li:nth-of-type(6) > a[target='_self']"));
             taskManager.Click();
             IWebElement secondaddtodrawer7 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
             secondaddtodrawer7.Click();
 
 
             // Add Screenshot
-            IWebElement screenshot = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(7) > a[target='_self']"));
+            IWebElement screenshot = driver.FindElement(By.CssSelector("li:nth-of-type(7) > a[target='_self']"));
             screenshot.Click();
 
             IWebElement secondaddtodrawer8 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
@@ -97,7 +97,7 @@ namespace MorphicCommunityAutomation.Objects
 
 
             // Add Magnifier
-            IWebElement magnifier = driver.FindElement(By.CssSelector("ul:nth-of-type(2) > li:nth-of-type(8) > a[target='_self']"));
+            IWebElement magnifier = driver.FindElement(By.CssSelector("li:nth-of-type(8) > a[target='_self']"));
             magnifier.Click();
 
             IWebElement secondaddtodrawer9 = driver.FindElement(By.CssSelector("#preview-drawer > div > button"));
@@ -132,12 +132,24 @@ namespace MorphicCommunityAutomation.Objects
 
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
-            IWebElement remove_btn_ = driver.FindElement(By.CssSelector("li#removeBar > a[role='button']"));
-            remove_btn_.Click();
+            IWebElement nameofcommunitybar = driver.FindElement(By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
+            string getnameofnewcommunitybar = nameofcommunitybar.Text;
+            Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("li#removeBar > a[role='button']"));
+
+            IWebElement rmv_button = driver.FindElement(By.CssSelector("li#removeBar > a[role='button']"));
+            rmv_button.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+
+            IWebElement rmv_rmv_btn = driver.FindElement(By.CssSelector("#barDeleteConfirm___BV_modal_footer_ > button.btn.btn-primary"));
+            rmv_rmv_btn.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
 
-            IWebElement remove_remove_btn = driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
-            remove_remove_btn.Click();
 
         }
     }
