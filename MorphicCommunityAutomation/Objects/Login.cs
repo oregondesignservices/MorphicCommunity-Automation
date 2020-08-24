@@ -20,7 +20,7 @@ namespace MorphicCommunityAutomation.Objects
         {
             IWebElement EMAIL = driver.FindElement(By.CssSelector("fieldset:nth-of-type(1) > div[role='group'] > input[label='Email']"));
             IWebElement PASSWORD = driver.FindElement(By.CssSelector("fieldset:nth-of-type(2) > div[role='group'] > input[label='Password']"));
-            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-lg-4.col-md-6 > div > form > .btn.btn-primary"));
+            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-md-3 > div > form > .btn.btn-primary"));
             EMAIL.SendKeys("dasda@adsad.das");
             PASSWORD.SendKeys("13213123123123");
             LOGIN_BTN.Click();
@@ -39,14 +39,14 @@ namespace MorphicCommunityAutomation.Objects
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             IWebElement EMAIL = driver.FindElement(By.CssSelector("fieldset:nth-of-type(1) > div[role='group'] > input[label='Email']"));
             IWebElement PASSWORD = driver.FindElement(By.CssSelector("fieldset:nth-of-type(2) > div[role='group'] > input[label='Password']"));
-            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-lg-4.col-md-6 > div > form > .btn.btn-primary"));
+            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-md-3 > div > form > .btn.btn-primary"));
             EMAIL.SendKeys("1");
             PASSWORD.SendKeys("2");
             LOGIN_BTN.Click();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             string INCORRECT_USRNAME = driver.FindElement(By.CssSelector("fieldset:nth-of-type(1) > div[role='group'] > .invalid-feedback")).Text;
             Assert.AreEqual(INCORRECT_USRNAME, "This is a required field and must be a valid email address.");
-            string INCORRECT_PASSWORD = driver.FindElement(By.CssSelector(".col-lg-4.col-md-6 > div > form > fieldset:nth-of-type(2) > div[role='group'] > .invalid-feedback")).Text;
+            string INCORRECT_PASSWORD = driver.FindElement(By.CssSelector(".col-md-3 > div > form > fieldset:nth-of-type(2) > div[role='group'] > .invalid-feedback")).Text;
             Assert.AreEqual(INCORRECT_PASSWORD, "This is a required field and must be at least 6 characters.");
 
         }
@@ -58,7 +58,7 @@ namespace MorphicCommunityAutomation.Objects
             driver.Navigate().Refresh();
             IWebElement EMAIL = driver.FindElement(By.CssSelector("fieldset:nth-of-type(1) > div[role='group'] > input[label='Email']"));
             IWebElement PASSWORD = driver.FindElement(By.CssSelector("fieldset:nth-of-type(2) > div[role='group'] > input[label='Password']"));
-            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-lg-4.col-md-6 > div > form > .btn.btn-primary"));
+            IWebElement LOGIN_BTN = driver.FindElement(By.CssSelector(".col-md-3 > div > form > .btn.btn-primary"));
             EMAIL.SendKeys("ivaylo@raisingthefloor.org");
             PASSWORD.SendKeys("123123123");
             LOGIN_BTN.Click();

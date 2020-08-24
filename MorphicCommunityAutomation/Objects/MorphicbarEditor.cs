@@ -118,5 +118,27 @@ namespace MorphicCommunityAutomation.Objects
             string getnameofnewcommunitybar = nameofcommunitybar.Text;
             Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
         }
+        
+        public void RemoveCommunityBarName()
+        {
+            IWebElement communitybarname = driver.FindElement(By.CssSelector("div#BarsList > ul > li:nth-of-type(2) > a"));
+            communitybarname.Click();
+            // Save bar name
+            IWebElement remove_btn = driver.FindElement(By.CssSelector("li#removeBar > a[role='button']"));
+            remove_btn.Click();
+
+            IWebElement cancel_btn = driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-secondary"));
+            cancel_btn.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+
+            IWebElement remove_btn_ = driver.FindElement(By.CssSelector("li#removeBar > a[role='button']"));
+            remove_btn_.Click();
+
+
+            IWebElement remove_remove_btn = driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            remove_remove_btn.Click();
+
+        }
     }
 }

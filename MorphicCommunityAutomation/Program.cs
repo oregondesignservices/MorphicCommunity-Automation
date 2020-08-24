@@ -27,6 +27,8 @@ namespace MorphicCommunityAutomation
 
             MemberInvite invitePerson = new MemberInvite();
             invitePerson.CheckEmptyFields();
+            /*            invitePerson.AddMember();
+                        invitePerson.AddMemberAndSendInvitation();*/
 
 
             Dashboard dashboard = new Dashboard();
@@ -39,6 +41,7 @@ namespace MorphicCommunityAutomation
             MorphicbarEditor morphicbarEditor = new MorphicbarEditor();
             morphicbarEditor.AddAllButtons();
             morphicbarEditor.ChangeCommunityBarName();
+            morphicbarEditor.RemoveCommunityBarName();
 
             CleanUp cleanUp = new CleanUp();
             cleanUp.CloseBrowser();

@@ -13,12 +13,12 @@ namespace MorphicCommunityAutomation.Objects
             IWebElement CREATE_COMMUNITY_BTN = driver.FindElement(By.CssSelector("button[type='submit']"));
             CREATE_COMMUNITY_BTN.Click();
 
-            string GET_ERROR_MSG_USRNAME = driver.FindElement(By.CssSelector(".col-lg-6.col-md-6 > form > fieldset:nth-of-type(1) > div[role='group']  .invalid-feedback")).Text;
+            string GET_ERROR_MSG_USRNAME = driver.FindElement(By.CssSelector(".col-md-4 > form > fieldset:nth-of-type(1) > div[role='group']  .invalid-feedback")).Text;
 
             Assert.AreEqual(GET_ERROR_MSG_USRNAME, "This is a required field.");
 
 
-            string GET_ERROR_MSG_EMAIL = driver.FindElement(By.CssSelector(".col-lg-6.col-md-6 > form > fieldset:nth-of-type(2) > div[role='group'] > .invalid-feedback")).Text;
+            string GET_ERROR_MSG_EMAIL = driver.FindElement(By.CssSelector(".col-md-4 > form > fieldset:nth-of-type(2) > div[role='group'] > .invalid-feedback")).Text;
 
 
             Assert.AreEqual(GET_ERROR_MSG_EMAIL, "This is a required field and must be a valid email address.");
