@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -105,20 +106,24 @@ namespace MorphicCommunityAutomation.Objects
 
         }
 
-        public void ChangeCommunityBarName() {
+        public void ChangeCommunityBarName()
+        {
             IWebElement communitybarname = driver.FindElement(By.Id("barName"));
             communitybarname.Clear();
             communitybarname.SendKeys("Name name name");
             // Save bar name
             IWebElement savecommunitybar = driver.FindElement(By.CssSelector("#editorNav > button"));
             savecommunitybar.Click();
-            driver.Navigate().Refresh();
+/*            driver.Navigate().Refresh();*/
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#BarsList > ul > li:nth-child(2) > a")));
+            wait.Until(driver => By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
             IWebElement nameofcommunitybar = driver.FindElement(By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
             string getnameofnewcommunitybar = nameofcommunitybar.Text;
             Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
         }
-        
+
         public void RemoveCommunityBarName()
         {
             IWebElement communitybarname = driver.FindElement(By.CssSelector("div#BarsList > ul > li:nth-of-type(2) > a"));
@@ -135,22 +140,139 @@ namespace MorphicCommunityAutomation.Objects
             IWebElement nameofcommunitybar = driver.FindElement(By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
             string getnameofnewcommunitybar = nameofcommunitybar.Text;
             Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
-
+/*
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("li#removeBar > a[role='button']"));
+            wait.Until(driver => By.CssSelector("#removeBar > a"));
+            hover.MoveToElement(driver.FindElement(By.CssSelector("#removeBar > a"))).Perform();
+            IWebElement rmv_button = driver.FindElement(By.CssSelector("#removeBar > a"));
+            rmv_button.Click();*/
 
-            IWebElement rmv_button = driver.FindElement(By.CssSelector("li#removeBar > a[role='button']"));
-            rmv_button.Click();
 
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-
-            IWebElement rmv_rmv_btn = driver.FindElement(By.CssSelector("#barDeleteConfirm___BV_modal_footer_ > button.btn.btn-primary"));
-            rmv_rmv_btn.Click();
 
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
+            wait.Until(driver => By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+
+            bool staleElement = true;
+            while (staleElement)
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary")).Click();
+                    staleElement = false;
+
+                }
+                catch (StaleElementReferenceException e)
+                {
+                    staleElement = true;
+                }
+            }
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+
+            wait.Until(driver => By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            IWebElement remove_rmv_button = driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            remove_rmv_button.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+        }
+        public void ChangeRoleOnFirstInvitedPerson()
+        {
+            bool staleElement = true;
+            while (staleElement)
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector("div#MembersList > ul > li:nth-of-type(2) > a")).Click();
+                    staleElement = false;
+
+                }
+                catch (StaleElementReferenceException e)
+                {
+                    staleElement = true;
+                }
+            }
+            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));    
+            IWebElement selectFirstPerson = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
+            selectFirstPerson.Click();
+
+            IWebElement selectUserDetails = driver.FindElement(By.CssSelector("ul#editorNav span"));
+            selectUserDetails.Click();
+
+            string NAME_OF_FIRST_PERSON = driver.FindElement(By.CssSelector(".bg-light.p-3 b")).Text;
+            Assert.AreEqual(NAME_OF_FIRST_PERSON, "Ivan Petrov");
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            while (staleElement)
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector("li:nth-of-type(1) > a[role='button']")).Click();
+                    staleElement = false;
+
+                }
+                catch (StaleElementReferenceException e)
+                {
+                    staleElement = true;
+                }
+            }
+            string ROLE = driver.FindElement(By.CssSelector("li:nth-of-type(1) > a[role='button']")).Text;
+            Assert.AreEqual(ROLE, "Make user a Community Manager");
+            IWebElement MAKE_COMMUNITY_MANAGER = driver.FindElement(By.CssSelector("li:nth-of-type(1) > a[role='button']"));
+            MAKE_COMMUNITY_MANAGER.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("footer#roleChangeConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("footer#roleChangeConfirm___BV_modal_footer_ > .btn.btn-primary")));
 
 
+            IWebElement CHANGE_ROLE = driver.FindElement(By.CssSelector("footer#roleChangeConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            CHANGE_ROLE.Click();
+
+            string CHANGED_ROLE = driver.FindElement(By.CssSelector("li:nth-of-type(1) > a[role='button']")).Text;
+            Assert.AreEqual(CHANGED_ROLE, "Remove community manager role from user");
+        }
+        public void RemoveFirstInvitedPerson()
+        {
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("li:nth-of-type(2) > a[role='button']"));
+
+            IWebElement DELETE_USER = driver.FindElement(By.CssSelector("li:nth-of-type(2) > a[role='button']"));
+            DELETE_USER.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary")));
+            IWebElement DELETE_BTN = driver.FindElement(By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            DELETE_BTN.Click();
+
+        }
+
+        public void RemoveSecondInvitedPerson()
+        {
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("li:nth-of-type(2) > a[role='button']"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("li:nth-of-type(2) > a[role='button']")));
+
+
+            IWebElement DELETE_USER = driver.FindElement(By.CssSelector("li:nth-of-type(2) > a[role='button']"));
+            DELETE_USER.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary")));
+
+            IWebElement DELETE_BTN1 = driver.FindElement(By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            DELETE_BTN1.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
+            IWebElement selectFirstPerson = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
+            selectFirstPerson.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("ul#editorNav span"));
+            IWebElement selectUserDetails = driver.FindElement(By.CssSelector("ul#editorNav span"));
+            selectUserDetails.Click();
         }
     }
 }

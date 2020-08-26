@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 
@@ -11,6 +12,9 @@ namespace MorphicCommunityAutomation.Objects
         public static IWebDriver driver = new ChromeDriver();
 
         public static WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+
+
+        public static Actions action = new Actions(driver);
         public void Initialize()
         {
 
