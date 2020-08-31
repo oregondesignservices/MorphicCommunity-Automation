@@ -2,10 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace MorphicCommunityAutomation.Objects
 {
@@ -114,7 +111,7 @@ namespace MorphicCommunityAutomation.Objects
             // Save bar name
             IWebElement savecommunitybar = driver.FindElement(By.CssSelector("#editorNav > button"));
             savecommunitybar.Click();
-/*            driver.Navigate().Refresh();*/
+            /*            driver.Navigate().Refresh();*/
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#BarsList > ul > li:nth-child(2) > a")));
@@ -140,12 +137,12 @@ namespace MorphicCommunityAutomation.Objects
             IWebElement nameofcommunitybar = driver.FindElement(By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
             string getnameofnewcommunitybar = nameofcommunitybar.Text;
             Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
-/*
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("#removeBar > a"));
-            hover.MoveToElement(driver.FindElement(By.CssSelector("#removeBar > a"))).Perform();
-            IWebElement rmv_button = driver.FindElement(By.CssSelector("#removeBar > a"));
-            rmv_button.Click();*/
+            /*
+                        wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+                        wait.Until(driver => By.CssSelector("#removeBar > a"));
+                        hover.MoveToElement(driver.FindElement(By.CssSelector("#removeBar > a"))).Perform();
+                        IWebElement rmv_button = driver.FindElement(By.CssSelector("#removeBar > a"));
+                        rmv_button.Click();*/
 
 
 
@@ -182,7 +179,7 @@ namespace MorphicCommunityAutomation.Objects
             {
                 try
                 {
-                    driver.FindElement(By.CssSelector("div#MembersList > ul > li:nth-of-type(2) > a")).Click();
+                    driver.FindElement(By.CssSelector("div#MembersList > ul > li:nth-of-type(1) > a")).Click();
                     staleElement = false;
 
                 }
@@ -191,8 +188,8 @@ namespace MorphicCommunityAutomation.Objects
                     staleElement = true;
                 }
             }
-            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));    
-            IWebElement selectFirstPerson = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
+            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
+            IWebElement selectFirstPerson = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(1) > a"));
             selectFirstPerson.Click();
 
             IWebElement selectUserDetails = driver.FindElement(By.CssSelector("ul#editorNav span"));
@@ -273,6 +270,17 @@ namespace MorphicCommunityAutomation.Objects
             wait.Until(driver => By.CssSelector("ul#editorNav span"));
             IWebElement selectUserDetails = driver.FindElement(By.CssSelector("ul#editorNav span"));
             selectUserDetails.Click();
+        }
+        public void CheckDragNDrop()
+        {
+/*            driver.Navigate().Refresh();
+            IWebElement GMAIL_BTN = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']"));
+            GMAIL_BTN.Click();
+
+            *//*action.DragAndDrop(driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']")), driver.FindElement(By.CssSelector("div#preview-bar > .barPreview.pl-2.pr-2.pt-2")) ).Build().Perform();*//*
+
+            action.DragAndDropToOffset(driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']")), 1099, 632).Build().Perform();
+            Thread.Sleep(1000000000);*/
         }
     }
 }

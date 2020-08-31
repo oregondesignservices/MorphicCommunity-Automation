@@ -32,6 +32,7 @@ namespace MorphicCommunityAutomation.Objects
 
             Assert.AreEqual(GET_ERROR_MSG_SCND_PSWRD, "This is a required field and must match password.");
 
+
         }
         public class RandomGenerator
         {
@@ -75,7 +76,7 @@ namespace MorphicCommunityAutomation.Objects
             REPEAT_PASSWORD.SendKeys("123123");
             CREATE_COMMUNITY_BTN.Click();
         }
-        
+
         [Test]
         public void AlreadyRegisteredEmail()
         {
@@ -100,7 +101,7 @@ namespace MorphicCommunityAutomation.Objects
             string GET_ERROR_MSG_ALREADY_REGISTERED_EMAIL = driver.FindElement(By.CssSelector("form > div[role = 'alert']")).Text;
 
             Assert.AreEqual(GET_ERROR_MSG_ALREADY_REGISTERED_EMAIL, "That email address already exists!");
-            
+
         }
 
     }

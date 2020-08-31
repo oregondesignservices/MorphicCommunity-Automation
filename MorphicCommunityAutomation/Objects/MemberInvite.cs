@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 
@@ -67,17 +66,17 @@ namespace MorphicCommunityAutomation.Objects
                         CANCEL_ADD_MEMBER_BTN.Click();*/
 
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("div:nth-of-type(1) > button:nth-of-type(2)"));
+            wait.Until(driver => By.CssSelector(".col-md-8 > button:nth-of-type(2)"));
 
-            IWebElement ADD_MEMBER_BTN = driver.FindElement(By.CssSelector("div:nth-of-type(1) > button:nth-of-type(2)"));
+            IWebElement ADD_MEMBER_BTN = driver.FindElement(By.CssSelector(".col-md-8 > button:nth-of-type(2)"));
             ADD_MEMBER_BTN.Click();
 
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("#memberConfirm___BV_modal_footer_ > button.btn.btn-primary"));
+            wait.Until(driver => By.CssSelector("footer#memberConfirm___BV_modal_footer_ > .btn.btn-primary"));
 
-            IWebElement ADD_MEMBER_ADD_MEMBER_BTN = wait.Until(e => e.FindElement(By.CssSelector("#memberConfirm___BV_modal_footer_ > button.btn.btn-primary")));
+            IWebElement ADD_MEMBER_ADD_MEMBER_BTN = wait.Until(e => e.FindElement(By.CssSelector("footer#memberConfirm___BV_modal_footer_ > .btn.btn-primary")));
 
-            action.MoveToElement(driver.FindElement(By.CssSelector("#memberConfirm___BV_modal_footer_ > button.btn.btn-primary"))).Perform();
+            action.MoveToElement(driver.FindElement(By.CssSelector("footer#memberConfirm___BV_modal_footer_ > .btn.btn-primary"))).Perform();
 
             /*            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
                         driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);*/
@@ -88,7 +87,7 @@ namespace MorphicCommunityAutomation.Objects
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             wait.Until(driver => By.CssSelector("div#MembersList a"));
 
-            string GET_PERSON_NAME = driver.FindElement(By.CssSelector("div#MembersList a")).Text;
+            string GET_PERSON_NAME = driver.FindElement(By.CssSelector("div#MembersList > ul > li:nth-of-type(1) > a")).Text;
 
             Assert.AreEqual(GET_PERSON_NAME, "Ivan Petrov");
         }
@@ -153,14 +152,14 @@ namespace MorphicCommunityAutomation.Objects
                 }
             }
             IWebElement SEND_INVITE_BTN = driver.FindElement(By.CssSelector("footer#inviteConfirm___BV_modal_footer_ > .btn.btn-primary"));
-/*            action.MoveToElement(driver.FindElement(By.CssSelector("footer#inviteConfirm___BV_modal_footer_ > .btn.btn-primary"))).Click().Build().Perform();*/
+            /*            action.MoveToElement(driver.FindElement(By.CssSelector("footer#inviteConfirm___BV_modal_footer_ > .btn.btn-primary"))).Click().Build().Perform();*/
             /*SEND_INVITE_BTN.Click();*/
 
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("li:nth-of-type(3) > a"));
+            wait.Until(driver => By.CssSelector("div#MembersList > ul > li:nth-of-type(2) > a"));
 
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(1);
-            string GET_PERSON_NAME = driver.FindElement(By.CssSelector("li:nth-of-type(3) > a")).Text;
+            string GET_PERSON_NAME = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a")).Text;
 
             Assert.AreEqual(GET_PERSON_NAME, "Martin Angelove");
         }

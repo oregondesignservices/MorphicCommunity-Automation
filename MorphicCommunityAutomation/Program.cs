@@ -41,10 +41,12 @@ namespace MorphicCommunityAutomation
             MorphicbarEditor morphicbarEditor = new MorphicbarEditor();
             morphicbarEditor.AddAllButtons();
             morphicbarEditor.ChangeCommunityBarName();
-            /*morphicbarEditor.RemoveCommunityBarName()*/;
+            /*morphicbarEditor.RemoveCommunityBarName()*/
+            ;
             morphicbarEditor.ChangeRoleOnFirstInvitedPerson();
             morphicbarEditor.RemoveFirstInvitedPerson();
             morphicbarEditor.RemoveSecondInvitedPerson();
+/*            morphicbarEditor.CheckDragNDrop();*/
 
             CleanUp cleanUp = new CleanUp();
             cleanUp.CloseBrowser();
