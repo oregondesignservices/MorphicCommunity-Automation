@@ -137,18 +137,6 @@ namespace MorphicCommunityAutomation.Objects
             IWebElement nameofcommunitybar = driver.FindElement(By.CssSelector("#BarsList > ul > li:nth-child(2) > a"));
             string getnameofnewcommunitybar = nameofcommunitybar.Text;
             Assert.AreEqual(getnameofnewcommunitybar, "Name name name");
-            /*
-                        wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-                        wait.Until(driver => By.CssSelector("#removeBar > a"));
-                        hover.MoveToElement(driver.FindElement(By.CssSelector("#removeBar > a"))).Perform();
-                        IWebElement rmv_button = driver.FindElement(By.CssSelector("#removeBar > a"));
-                        rmv_button.Click();*/
-
-
-
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-
-            wait.Until(driver => By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
 
             bool staleElement = true;
             while (staleElement)
@@ -167,6 +155,8 @@ namespace MorphicCommunityAutomation.Objects
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
 
             wait.Until(driver => By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary")));
+
             IWebElement remove_rmv_button = driver.FindElement(By.CssSelector("footer#barDeleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
             remove_rmv_button.Click();
 
@@ -246,6 +236,24 @@ namespace MorphicCommunityAutomation.Objects
 
         public void RemoveSecondInvitedPerson()
         {
+            driver.Navigate().Refresh();
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(1) > a"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#MembersList > ul > li:nth-child(1) > a")));
+
+
+            IWebElement SECOND_INVITED_PERSON1 = driver.FindElement(By.CssSelector("div#MembersList a"));
+            SECOND_INVITED_PERSON1.Click();
+
+            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
+            wait.Until(driver => By.CssSelector("span"));
+            wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("span")));
+
+
+            IWebElement USER_DETAILS = driver.FindElement(By.CssSelector("span"));
+            USER_DETAILS.Click();
+
+
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             wait.Until(driver => By.CssSelector("li:nth-of-type(2) > a[role='button']"));
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("li:nth-of-type(2) > a[role='button']")));
@@ -260,27 +268,6 @@ namespace MorphicCommunityAutomation.Objects
 
             IWebElement DELETE_BTN1 = driver.FindElement(By.CssSelector("footer#deleteConfirm___BV_modal_footer_ > .btn.btn-primary"));
             DELETE_BTN1.Click();
-
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
-            IWebElement selectFirstPerson = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a"));
-            selectFirstPerson.Click();
-
-            wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
-            wait.Until(driver => By.CssSelector("ul#editorNav span"));
-            IWebElement selectUserDetails = driver.FindElement(By.CssSelector("ul#editorNav span"));
-            selectUserDetails.Click();
-        }
-        public void CheckDragNDrop()
-        {
-/*            driver.Navigate().Refresh();
-            IWebElement GMAIL_BTN = driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']"));
-            GMAIL_BTN.Click();
-
-            *//*action.DragAndDrop(driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']")), driver.FindElement(By.CssSelector("div#preview-bar > .barPreview.pl-2.pr-2.pt-2")) ).Build().Perform();*//*
-
-            action.DragAndDropToOffset(driver.FindElement(By.CssSelector("ul:nth-of-type(1) > div > li:nth-of-type(1) > a[target='_self']")), 1099, 632).Build().Perform();
-            Thread.Sleep(1000000000);*/
         }
     }
 }

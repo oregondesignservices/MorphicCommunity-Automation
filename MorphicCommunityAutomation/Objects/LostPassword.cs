@@ -31,8 +31,6 @@ namespace MorphicCommunityAutomation.Objects
             driver.Navigate().Refresh();
             IWebElement EMAIL = driver.FindElement(By.TagName("input"));
             EMAIL.SendKeys("dsadasd");
-            /*            IWebElement RST_PSWRD = driver.FindElement(By.CssSelector("body > div > div.jumbotron.bg-light > div > div.col-md-7 > form > button"));
-                        RST_PSWRD.Click();*/
 
 
             string INVLD_EMAIL_ERROR = driver.FindElement(By.ClassName("invalid-feedback")).Text;

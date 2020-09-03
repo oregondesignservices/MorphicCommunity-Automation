@@ -1,5 +1,4 @@
-﻿using Globant.Selenium.Axe;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -14,11 +13,8 @@ namespace MorphicCommunityAutomation.Objects
 
         public static WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
 
-
         public static Actions action = new Actions(driver);
 
-        AxeResult results = driver.Analyze();
-        AxeResult axeResult = new AxeBuilder(driver).Analyze();
 
         public void Initialize()
         {
