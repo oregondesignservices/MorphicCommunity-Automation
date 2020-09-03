@@ -9,9 +9,9 @@ namespace MorphicCommunityAutomation
             SetUp setUp = new SetUp();
             setUp.Initialize();
 
-            LostPassword lostPassword = new LostPassword();
+ /*           LostPassword lostPassword = new LostPassword();
             lostPassword.CheckLostPassword();
-            lostPassword.InvalidEmail();
+            lostPassword.InvalidEmail();*/
 
             Login login = new Login();
             login.GoToHomeURL();

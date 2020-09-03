@@ -236,7 +236,7 @@ namespace MorphicCommunityAutomation.Objects
 
         public void RemoveSecondInvitedPerson()
         {
-            driver.Navigate().Refresh();
+            
             wait.Until(d => ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete"));
             wait.Until(driver => By.CssSelector("#MembersList > ul > li:nth-child(1) > a"));
             wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("#MembersList > ul > li:nth-child(1) > a")));

@@ -79,7 +79,7 @@ namespace MorphicCommunityAutomation.Objects
 
             string GET_PERSON_NAME = driver.FindElement(By.CssSelector("div#MembersList > ul > li:nth-of-type(1) > a")).Text;
 
-            Assert.AreEqual(GET_PERSON_NAME, "Ivan Petrov");
+            Assert.AreEqual(GET_PERSON_NAME, "Ivan Petrov *");
         }
             [Test]
         public void AddMemberAndSendInvitation()
@@ -155,7 +155,7 @@ namespace MorphicCommunityAutomation.Objects
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(1);
             string GET_PERSON_NAME = driver.FindElement(By.CssSelector("#MembersList > ul > li:nth-child(2) > a")).Text;
 
-            Assert.AreEqual(GET_PERSON_NAME, "Martin Angelove");
+            Assert.AreEqual(GET_PERSON_NAME, "Martin Angelove *");
         }
     }
 }
